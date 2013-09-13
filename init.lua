@@ -115,7 +115,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. cname .. '.png' },
 		--inventory_image = 'blox_' .. cname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -126,7 +126,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -137,7 +137,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -148,7 +148,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -159,7 +159,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_wood_defaults(),
 	})
 
@@ -170,7 +170,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -181,7 +181,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -192,7 +192,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_wood_defaults(),
 	})
 
@@ -203,7 +203,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_wood_defaults(),
 	})
 
@@ -214,7 +214,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -225,7 +225,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -236,7 +236,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_wood_defaults(),
 	})
 
@@ -247,7 +247,7 @@ minetest.register_node("blox:glowdust", {
 		tile_images = { 'blox_' .. sname .. '.png' },
 		--inventory_image = 'blox_' .. sname .. '.png',
 		is_ground_content = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 end
