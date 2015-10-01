@@ -22,7 +22,7 @@ end
 
 -- Uncomment the line above and change value to 0 to keep nodes in creative inventory when colormachine is installed.
 
-local version = "0.6.6"
+local version = "0.7.2112"
 
 local DyeSub = ""
 
@@ -550,79 +550,33 @@ minetest.register_tool("blox:bloodbane", {
     }
 })
 
-
--- Chunk sizes for ore generation (bigger = ore deposits are more scattered around)
-
-glowore_chunk_size = 14
-
-
--- Amount of ore per chunk (higher = bigger ore deposits)
-glowore_ore_per_chunk = 2
-
-
--- Minimal depths of ore generation (Y coordinate)
-glowore_min_depth = -31000
-
-
--- Maximal depths of ore generation (Y coordinate)
-glowore_max_depth = -2
-
-
--- Ore generation
-
-local function generate_ore(name, wherein, minp, maxp, seed, chunks_per_volume, ore_per_chunk, height_min, height_max)
-	if maxp.y < height_min or minp.y > height_max then
-		return
-	end
-	local y_min = math.max(minp.y, height_min)
-	local y_max = math.min(maxp.y, height_max)
-	local volume = (maxp.x - minp.x + 1) * (y_max - y_min + 1) * (maxp.z - minp.z + 1)
-	local pr = PseudoRandom(seed)
-	local num_chunks = math.floor(chunks_per_volume * volume)
-	local chunk_size = 3
-	if ore_per_chunk <= 4 then
-		chunk_size = 2
-	end
-	local inverse_chance = math.floor(chunk_size * chunk_size * chunk_size / ore_per_chunk)
-	-- print(generate_ore num_chunks: ..dump(num_chunks))
-	for i=1,num_chunks do
-	if (y_max-chunk_size+1 <= y_min) then return end
-		local y0 = pr:next(y_min, y_max-chunk_size+1)
-		if y0 >= height_min and y0 <= height_max then
-			local x0 = pr:next(minp.x, maxp.x-chunk_size+1)
-			local z0 = pr:next(minp.z, maxp.z-chunk_size+1)
-			local p0 = {x=x0, y=y0, z=z0}
-			for x1=0,chunk_size-1 do
-			for y1=0,chunk_size-1 do
-			for z1=0,chunk_size-1 do
-				if pr:next(1,inverse_chance) == 1 then
-					local x2 = x0+x1
-					local y2 = y0+y1
-					local z2 = z0+z1
-					local p2 = {x=x2, y=y2, z=z2}
-					if minetest.get_node(p2).name == wherein then
-						minetest.set_node(p2, {name=name})
-					end
-				end
-			end
-			end
-			end
-		end
-	end
-	-- print(generate_ore done)
+math.randomseed(os.time())
+local ovule = math.random(10, 100)
+local sea_level = 1
+	
+minetest.register_on_mapgen_init(mapgen_params)
+	ovule = ovule + mapgen_params.seed
+	sea_level = mapgen_params.water_level
 end
 
-minetest.register_on_generated(function(minp, maxp, seed)
-	math.randomseed(os.time())
-	local current_seed = seed + math.random(10, 100)
-	local function get_next_seed()
-		current_seed = current_seed + 1
-		return current_seed
-	end
-
-	generate_ore("blox:glowore", "default:stone", minp, maxp, get_next_seed(),
-	1/glowore_chunk_size/glowore_chunk_size/glowore_chunk_size, glowore_ore_per_chunk, glowore_min_depth, glowore_max_depth)
-
-end)
+minetest.register_ore({
+    ore_type       = "puff",
+    ore            = "blox:glowore",
+    wherein        = "default:stone",
+    clust_scarcity = 24*24*24,
+    clust_num_ores = 6,
+    clust_size     = 4,
+    height_min     = -31000,
+    height_max     = sea_level - 3,
+	noise_threshhold = 0.5,
+	noise_params = {
+		offset = 0,
+		scale = 1,
+		spread = {x=100, y=100, z=100},
+		seed = ovule,
+		octaves = 2,
+		persist = 0.70
+	}
+})
 
 print("Blox Mod [" ..version.. "] Loaded!")
