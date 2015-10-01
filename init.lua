@@ -550,8 +550,7 @@ minetest.register_tool("blox:bloodbane", {
     }
 })
 
-math.randomseed(os.time())
-local ovule = math.random(10, 100)
+local ovule = 2112 + 12
 local sea_level = 1
 
 minetest.register_on_mapgen_init(function(mapgen_params)
