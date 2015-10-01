@@ -550,32 +550,43 @@ minetest.register_tool("blox:bloodbane", {
     }
 })
 
-local ovule = 2112 + 12
 local sea_level = 1
 
 minetest.register_on_mapgen_init(function(mapgen_params)
-	ovule = ovule + mapgen_params.seed
 	sea_level = mapgen_params.water_level
 end)
 
 minetest.register_ore({
-    ore_type       = "puff",
-    ore            = "blox:glowore",
-    wherein        = "default:stone",
-    clust_scarcity = 24*24*24,
-    clust_num_ores = 6,
-    clust_size     = 4,
-    height_min     = -31000,
-    height_max     = sea_level - 3,
-	noise_threshhold = 0.5,
-	noise_params = {
-		offset = 0,
-		scale = 1,
-		spread = {x=100, y=100, z=100},
-		seed = ovule,
-		octaves = 2,
-		persist = 0.70
-	}
+	ore_type       = "scatter",
+	ore            = "blox:glowore",
+	wherein        = "default:stone",
+	clust_scarcity = 36 * 36 * 36,
+	clust_num_ores = 3,
+	clust_size     = 2,
+	y_min          = sea_level,
+	y_max          = 31000,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "blox:glowore",
+	wherein        = "default:stone",
+	clust_scarcity = 14 * 14 * 14,
+	clust_num_ores = 5,
+	clust_size     = 3,
+	y_min          = sea_level - 30,
+	y_max          = sea_level + 20,
+})
+
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "blox:glowore",
+	wherein        = "default:stone",
+	clust_scarcity = 36 * 36 * 36,
+	clust_num_ores = 3,
+	clust_size     = 2,
+	y_min          = -31000,
+	y_max          = sea_level - 1,
 })
 
 print("Blox Mod [" ..version.. "] Loaded!")
