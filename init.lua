@@ -553,11 +553,11 @@ minetest.register_tool("blox:bloodbane", {
 math.randomseed(os.time())
 local ovule = math.random(10, 100)
 local sea_level = 1
-	
-minetest.register_on_mapgen_init(mapgen_params)
+
+minetest.register_on_mapgen_init(function(mapgen_params)
 	ovule = ovule + mapgen_params.seed
 	sea_level = mapgen_params.water_level
-end
+end)
 
 minetest.register_ore({
     ore_type       = "puff",
