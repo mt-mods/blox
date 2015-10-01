@@ -262,8 +262,8 @@ Material = "default:wood" else
 Material = "default:stone"
 end
 end
-print(Material, 'unifieddyes:' .. colour)
-print('unifieddyes:' .. colour, Material)
+--print(Material, 'unifieddyes:' .. colour)
+--print('unifieddyes:' .. colour, Material)
 minetest.register_craft({
 	output = 'blox:' .. DyeSub ..'quarter' .. NMaterial .. ' 4',
 	recipe = {
