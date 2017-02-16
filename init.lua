@@ -8,21 +8,7 @@ by blert2112
 ***********
 --]]
 
--- Remove Blox from creative inventory if colormachine mod is installed
-
 blox = {}
-
-local creative = 0
-
-if (minetest.get_modpath("colormachine")) then
-	creative = 1
-end
-
--- Uncomment the line below to remove most nodes from creative inventory regardless of colormachine mod.
-
--- local creative = 1
-
--- Uncomment the line above and change value to 0 to keep nodes in creative inventory when colormachine is installed.
 
 local version = "0.8"
 
@@ -123,7 +109,7 @@ for _, nodeclass in ipairs(NodeClass) do
 		paramtype = "light",
 		paramtype2 = "color",
 		is_ground_content = true,
-		groups = {cracky=3, not_in_creative_inventory=creative, ud_param2_colorable = 1},
+		groups = {cracky=3, ud_param2_colorable = 1},
 		sounds = default.node_sound_stone_defaults(),
 		after_dig_node = unifieddyes.after_dig_node
 	})
@@ -140,7 +126,7 @@ for _, nodeclass in ipairs(NodeClass) do
 		paramtype = "light",
 		paramtype2 = "color",
 		is_ground_content = true,
-		groups = {cracky=3, not_in_creative_inventory=creative, ud_param2_colorable = 1},
+		groups = {cracky=3, ud_param2_colorable = 1},
 		sounds = default.node_sound_stone_defaults(),
 		after_dig_node = unifieddyes.after_dig_node
 	})
@@ -157,7 +143,7 @@ for _, nodeclass in ipairs(NodeClass) do
 		paramtype = "light",
 		paramtype2 = "color",
 		is_ground_content = true,
-		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=creative, ud_param2_colorable = 1},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 		sounds = default.node_sound_wood_defaults(),
 		after_dig_node = unifieddyes.after_dig_node
 	})
@@ -172,7 +158,7 @@ minetest.register_node("blox:wood_tinted", {
 	paramtype = "light",
 	paramtype2 = "color",
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=creative, ud_param2_colorable = 1},
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = unifieddyes.after_dig_node
 })
@@ -185,7 +171,7 @@ minetest.register_node("blox:cobble_tinted", {
 	paramtype = "light",
 	paramtype2 = "color",
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=creative, ud_param2_colorable = 1},
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = unifieddyes.after_dig_node
 })
@@ -197,7 +183,7 @@ minetest.register_node("blox:stone_tinted", {
 	paramtype = "light",
 	paramtype2 = "color",
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=creative, ud_param2_colorable = 1},
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = unifieddyes.after_dig_node
 })
@@ -209,7 +195,7 @@ minetest.register_node("blox:stone_square", {
 	paramtype = "light",
 	paramtype2 = "color",
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory=creative, ud_param2_colorable = 1},
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = unifieddyes.after_dig_node
 })
