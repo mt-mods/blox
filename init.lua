@@ -184,7 +184,8 @@ minetest.register_node("blox:cobble_tinted", {
 	is_ground_content = true,
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
-	after_dig_node = unifieddyes.after_dig_node
+	after_dig_node = unifieddyes.after_dig_node,
+	drop = "default:cobble"
 })
 
 minetest.register_node("blox:stone_tinted", {
@@ -196,7 +197,8 @@ minetest.register_node("blox:stone_tinted", {
 	is_ground_content = true,
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
-	after_dig_node = unifieddyes.after_dig_node
+	after_dig_node = unifieddyes.after_dig_node,
+	drop = "default:cobble"
 })
 
 -- Override default stone and default cobble
