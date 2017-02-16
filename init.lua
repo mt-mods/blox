@@ -215,6 +215,27 @@ minetest.override_item("default:cobble", {
 	groups = {cracky = 3, stone = 2, ud_param2_colorable = 1},
 })
 
+if minetest.get_modpath("moreblocks") then
+	minetest.override_item("moreblocks:stone_tile", {
+		paramtype2 = "color",
+		palette = "unifieddyes_palette.png",
+		ud_replacement_node = "blox:stone_square",
+		groups = {cracky = 3, ud_param2_colorable = 1},
+	})
+	minetest.override_item("blox:stone_square", {
+		drop = "moreblocks:stone_tile"
+	})
+else
+	minetest.register_craft({
+		output = "blox:stone_square 6",
+		recipe = {
+			{ dye_color,       "default:stone", "default:stone" },
+			{ "default:stone", dye_color,       "default:stone" },
+			{ "default:stone", "default:stone", dye_color       },
+		}
+	})
+end
+
 -- Crafting
 
 minetest.register_craft({
@@ -294,15 +315,6 @@ for _, material in ipairs(NodeMaterial) do
 		}
 	})
 end
-
-minetest.register_craft({
-	output = "blox:stone_square 6",
-	recipe = {
-		{ dye_color,       "default:stone", "default:stone" },
-		{ "default:stone", dye_color,       "default:stone" },
-		{ "default:stone", "default:stone", dye_color       },
-	}
-})
 
 minetest.register_craft({
 	output = "blox:wood_tinted 6",
