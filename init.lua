@@ -238,6 +238,26 @@ else
 	})
 end
 
+if minetest.get_modpath("coloredwood") then
+	minetest.register_craft({
+		output = "blox:wood_tinted 6",
+		recipe = {
+			{ "",             "default:wood",      ""             },
+			{ "default:wood", "unifieddyes:white", "default:wood" },
+			{ "",             "default:wood",      ""             },
+		}
+	})
+else
+	minetest.override_item("default:wood", {
+		paramtype2 = "color",
+		ud_replacement_node = "blox:wood_tinted",
+		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1, ud_param2_colorable = 1},
+	})
+	minetest.override_item("blox:wood_tinted", {
+		drop = "default:wood"
+	})
+end
+
 -- Crafting
 
 minetest.register_craft({
@@ -317,15 +337,6 @@ for _, material in ipairs(NodeMaterial) do
 		}
 	})
 end
-
-minetest.register_craft({
-	output = "blox:wood_tinted 6",
-	recipe = {
-		{ "",             "default:wood", ""             },
-		{ "default:wood", dye_color,      "default:wood" },
-		{ "",             "default:wood", ""             },
-	}
-})
 
 --Fuel
 
