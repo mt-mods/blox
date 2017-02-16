@@ -163,6 +163,17 @@ minetest.register_node("blox:wood_tinted", {
 	after_dig_node = unifieddyes.after_dig_node
 })
 
+minetest.register_node("blox:stone_square", {
+	description = "Blox stone square",
+	tiles = { "blox_stone_square.png" },
+	palette = "unifieddyes_palette.png",
+	paramtype = "light",
+	paramtype2 = "color",
+	is_ground_content = true,
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
+	sounds = default.node_sound_wood_defaults(),
+	after_dig_node = unifieddyes.after_dig_node
+})
 
 minetest.register_node("blox:cobble_tinted", {
 	description = "Blox tinted cobble",
@@ -188,16 +199,20 @@ minetest.register_node("blox:stone_tinted", {
 	after_dig_node = unifieddyes.after_dig_node
 })
 
-minetest.register_node("blox:stone_square", {
-	description = "Blox stone square",
-	tiles = { "blox_stone_square.png" },
-	palette = "unifieddyes_palette.png",
-	paramtype = "light",
+-- Override default stone and default cobble
+
+minetest.override_item("default:stone", {
 	paramtype2 = "color",
-	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
-	sounds = default.node_sound_wood_defaults(),
-	after_dig_node = unifieddyes.after_dig_node
+	palette = "unifieddyes_palette.png",
+	ud_replacement_node = "blox:stone_tinted",
+	groups = {cracky = 3, stone = 1, ud_param2_colorable = 1},
+})
+
+minetest.override_item("default:cobble", {
+	paramtype2 = "color",
+	palette = "unifieddyes_palette.png",
+	ud_replacement_node = "blox:cobble_tinted",
+	groups = {cracky = 3, stone = 2, ud_param2_colorable = 1},
 })
 
 -- Crafting
@@ -290,29 +305,11 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "blox:stone_tinted 6",
-	recipe = {
-		{ "",              "default:stone", ""              },
-		{ "default:stone", dye_color,       "default:stone" },
-		{ "",              "default:stone", ""              },
-	}
-})
-
-minetest.register_craft({
 	output = "blox:wood_tinted 6",
 	recipe = {
 		{ "",             "default:wood", ""             },
 		{ "default:wood", dye_color,      "default:wood" },
 		{ "",             "default:wood", ""             },
-	}
-})
-
-minetest.register_craft({
-	output = "blox:cobble_tinted 6",
-	recipe = {
-		{ "",               "default:cobble", ""               },
-		{ "default:cobble", dye_color,        "default:cobble" },
-		{ "",               "default:cobble", ""               },
 	}
 })
 
