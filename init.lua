@@ -40,6 +40,8 @@ local NodeMaterial = {
 	"cobble",
 }
 
+local moreblocks = minetest.get_modpath("moreblocks")
+
 -- Nodes
 
 minetest.register_node("blox:glowstone", {
@@ -217,7 +219,7 @@ minetest.override_item("default:cobble", {
 	groups = {cracky = 3, stone = 2, ud_param2_colorable = 1},
 })
 
-if minetest.get_modpath("moreblocks") then
+if moreblocks then
 	minetest.override_item("moreblocks:stone_tile", {
 		paramtype2 = "color",
 		palette = "unifieddyes_palette.png",
@@ -226,6 +228,46 @@ if minetest.get_modpath("moreblocks") then
 	})
 	minetest.override_item("blox:stone_square", {
 		drop = "moreblocks:stone_tile"
+	})
+
+	minetest.override_item("moreblocks:circle_stone_bricks", {
+		paramtype2 = "color",
+		palette = "unifieddyes_palette.png",
+		ud_replacement_node = "blox:stone_loop",
+		groups = {cracky = 3, ud_param2_colorable = 1},
+	})
+	minetest.override_item("blox:stone_loop", {
+		drop = "moreblocks:circle_stone_bricks"
+	})
+
+	minetest.override_item("moreblocks:iron_checker", {
+		paramtype2 = "color",
+		palette = "unifieddyes_palette.png",
+		ud_replacement_node = "blox:stone_checker",
+		groups = {cracky = 3, ud_param2_colorable = 1},
+	})
+	minetest.override_item("blox:stone_checker", {
+		drop = "moreblocks:iron_checker"
+	})
+
+	minetest.override_item("moreblocks:wood_tile", {
+		paramtype2 = "color",
+		palette = "unifieddyes_palette.png",
+		ud_replacement_node = "blox:wood_quarter",
+		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
+	})
+	minetest.override_item("blox:wood_quarter", {
+		drop = "moreblocks:wood_tile"
+	})
+
+	minetest.override_item("moreblocks:wood_tile_flipped", {
+		paramtype2 = "color",
+		palette = "unifieddyes_palette.png",
+		ud_replacement_node = "blox:wood_quarter",
+		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
+	})
+	minetest.override_item("blox:wood_quarter", {
+		drop = "moreblocks:wood_tile"
 	})
 else
 	minetest.register_craft({
@@ -284,13 +326,15 @@ for _, material in ipairs(NodeMaterial) do
 		}
 	})
 
-	minetest.register_craft({
-		output = "blox:"..material.."_quarter 4",
-		recipe = {
-			{ dye_color, def_mat   },
-			{ def_mat,   dye_color },
-		}
-	})
+	if not (moreblocks and material == "wood") then
+		minetest.register_craft({
+			output = "blox:"..material.."_quarter 4",
+			recipe = {
+				{ dye_color, def_mat   },
+				{ def_mat,   dye_color },
+			}
+		})
+	end
 
 	minetest.register_craft({
 		output = "blox:"..material.."_cross 4",
@@ -298,24 +342,6 @@ for _, material in ipairs(NodeMaterial) do
 			{ def_mat, "",        def_mat },
 			{ "",      dye_color, ""      },
 			{ def_mat, "",        def_mat },
-		}
-	})
-
-	minetest.register_craft({
-		output = "blox:"..material.."_checker 6",
-		recipe = {
-			{ def_mat,   dye_color, def_mat   },
-			{ dye_color, def_mat,   dye_color },
-			{ def_mat,   dye_color, def_mat   },
-		}
-	})
-
-	minetest.register_craft({
-		output = "blox:"..material.."_checker 8",
-		recipe = {
-			{ dye_color, def_mat,   dye_color },
-			{ def_mat,   dye_color, def_mat   },
-			{ dye_color, def_mat,   dye_color },
 		}
 	})
 
@@ -328,14 +354,35 @@ for _, material in ipairs(NodeMaterial) do
 		}
 	})
 
-	minetest.register_craft({
-		output = "blox:"..material.."_loop 6",
-		recipe = {
-			{ def_mat, def_mat,   def_mat },
-			{ def_mat, dye_color, def_mat },
-			{ def_mat, def_mat,   def_mat },
-		}
-	})
+	if not (moreblocks and material == "stone") then
+
+		minetest.register_craft({
+			output = "blox:"..material.."_checker 6",
+			recipe = {
+				{ def_mat,   dye_color, def_mat   },
+				{ dye_color, def_mat,   dye_color },
+				{ def_mat,   dye_color, def_mat   },
+			}
+		})
+
+		minetest.register_craft({
+			output = "blox:"..material.."_checker 8",
+			recipe = {
+				{ dye_color, def_mat,   dye_color },
+				{ def_mat,   dye_color, def_mat   },
+				{ dye_color, def_mat,   dye_color },
+			}
+		})
+
+		minetest.register_craft({
+			output = "blox:"..material.."_loop 6",
+			recipe = {
+				{ def_mat, def_mat,   def_mat },
+				{ def_mat, dye_color, def_mat },
+				{ def_mat, def_mat,   def_mat },
+			}
+		})
+	end
 end
 
 --Fuel
