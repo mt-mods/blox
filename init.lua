@@ -184,7 +184,7 @@ minetest.register_node("blox:cobble_tinted", {
 	paramtype = "light",
 	paramtype2 = "color",
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = unifieddyes.after_dig_node,
 	drop = "default:cobble"
@@ -197,7 +197,7 @@ minetest.register_node("blox:stone_tinted", {
 	paramtype = "light",
 	paramtype2 = "color",
 	is_ground_content = true,
-	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	after_dig_node = unifieddyes.after_dig_node,
 	drop = "default:cobble"
@@ -227,7 +227,8 @@ if moreblocks then
 		groups = {cracky = 3, ud_param2_colorable = 1},
 	})
 	minetest.override_item("blox:stone_square", {
-		drop = "moreblocks:stone_tile"
+		drop = "moreblocks:stone_tile",
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	})
 
 	minetest.override_item("moreblocks:circle_stone_bricks", {
@@ -237,7 +238,8 @@ if moreblocks then
 		groups = {cracky = 3, ud_param2_colorable = 1},
 	})
 	minetest.override_item("blox:stone_loop", {
-		drop = "moreblocks:circle_stone_bricks"
+		drop = "moreblocks:circle_stone_bricks",
+		groups = {cracky = 3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	})
 
 	minetest.override_item("moreblocks:iron_checker", {
@@ -247,7 +249,8 @@ if moreblocks then
 		groups = {cracky = 3, ud_param2_colorable = 1},
 	})
 	minetest.override_item("blox:stone_checker", {
-		drop = "moreblocks:iron_checker"
+		drop = "moreblocks:iron_checker",
+		groups = {cracky = 3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	})
 
 	minetest.override_item("moreblocks:wood_tile", {
@@ -257,7 +260,8 @@ if moreblocks then
 		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
 	})
 	minetest.override_item("blox:wood_quarter", {
-		drop = "moreblocks:wood_tile"
+		drop = "moreblocks:wood_tile",
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	})
 
 	minetest.override_item("moreblocks:wood_tile_flipped", {
@@ -265,9 +269,6 @@ if moreblocks then
 		palette = "unifieddyes_palette.png",
 		ud_replacement_node = "blox:wood_quarter",
 		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
-	})
-	minetest.override_item("blox:wood_quarter", {
-		drop = "moreblocks:wood_tile"
 	})
 else
 	minetest.register_craft({
@@ -296,7 +297,8 @@ else
 		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1, ud_param2_colorable = 1},
 	})
 	minetest.override_item("blox:wood_tinted", {
-		drop = "default:wood"
+		drop = "default:wood",
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	})
 end
 
