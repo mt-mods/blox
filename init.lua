@@ -219,6 +219,8 @@ minetest.override_item("default:cobble", {
 	groups = {cracky = 3, stone = 2, ud_param2_colorable = 1},
 })
 
+local dye_color = "unifieddyes:white"
+
 if moreblocks then
 	minetest.override_item("moreblocks:stone_tile", {
 		paramtype2 = "color",
@@ -285,9 +287,9 @@ if minetest.get_modpath("coloredwood") then
 	minetest.register_craft({
 		output = "blox:wood_tinted 6",
 		recipe = {
-			{ "",             "default:wood",      ""             },
-			{ "default:wood", "unifieddyes:white", "default:wood" },
-			{ "",             "default:wood",      ""             },
+			{ "",             "default:wood", ""             },
+			{ "default:wood", dye_color,      "default:wood" },
+			{ "",             "default:wood", ""             },
 		}
 	})
 else
@@ -312,8 +314,6 @@ minetest.register_craft({
 		{"", 'blox:glowdust', ""},
 	}
 })
-
-local dye_color = "unifieddyes:white"
 
 for _, material in ipairs(NodeMaterial) do
 
