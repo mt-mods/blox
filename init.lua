@@ -579,7 +579,7 @@ minetest.register_lbm({
 minetest.register_lbm({
 	name = "blox:recolor_stuff",
 	label = "Convert 89-color blocks to use UD extended palette",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = blox.old_89_color_nodes,
 	action = function(pos, node)
 		local meta = minetest.get_meta(pos)
