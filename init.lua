@@ -224,14 +224,12 @@ table.insert(blox.old_89_color_nodes, "blox:stone_tinted")
 -- Override default stone and default cobble
 
 minetest.override_item("default:stone", {
-	paramtype2 = "color",
 	palette = "unifieddyes_palette_extended.png",
 	ud_replacement_node = "blox:stone_tinted",
 	groups = {cracky = 3, stone = 1, ud_param2_colorable = 1},
 })
 
 minetest.override_item("default:cobble", {
-	paramtype2 = "color",
 	palette = "unifieddyes_palette_extended.png",
 	ud_replacement_node = "blox:cobble_tinted",
 	groups = {cracky = 3, stone = 2, ud_param2_colorable = 1},
@@ -241,7 +239,6 @@ local dye_color = "unifieddyes:white"
 
 if moreblocks then
 	minetest.override_item("moreblocks:stone_tile", {
-		paramtype2 = "color",
 		palette = "unifieddyes_palette_extended.png",
 		ud_replacement_node = "blox:stone_square",
 		groups = {cracky = 3, ud_param2_colorable = 1},
@@ -252,7 +249,6 @@ if moreblocks then
 	})
 
 	minetest.override_item("moreblocks:circle_stone_bricks", {
-		paramtype2 = "color",
 		palette = "unifieddyes_palette_extended.png",
 		ud_replacement_node = "blox:stone_loop",
 		groups = {cracky = 3, ud_param2_colorable = 1},
@@ -263,7 +259,6 @@ if moreblocks then
 	})
 
 	minetest.override_item("moreblocks:iron_checker", {
-		paramtype2 = "color",
 		palette = "unifieddyes_palette_extended.png",
 		ud_replacement_node = "blox:stone_checker",
 		groups = {cracky = 3, ud_param2_colorable = 1},
@@ -274,7 +269,6 @@ if moreblocks then
 	})
 
 	minetest.override_item("moreblocks:wood_tile", {
-		paramtype2 = "color",
 		palette = "unifieddyes_palette_extended.png",
 		ud_replacement_node = "blox:wood_quarter",
 		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
@@ -285,7 +279,6 @@ if moreblocks then
 	})
 
 	minetest.override_item("moreblocks:wood_tile_flipped", {
-		paramtype2 = "color",
 		palette = "unifieddyes_palette_extended.png",
 		ud_replacement_node = "blox:wood_quarter",
 		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
@@ -312,7 +305,6 @@ if minetest.get_modpath("coloredwood") then
 	})
 else
 	minetest.override_item("default:wood", {
-		paramtype2 = "color",
 		ud_replacement_node = "blox:wood_tinted",
 		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1, ud_param2_colorable = 1},
 	})
