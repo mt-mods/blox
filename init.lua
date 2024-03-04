@@ -10,7 +10,7 @@ by blert2112
 
 blox = {}
 
-local version = "0.8"
+local version = "0.9"
 
 local BloxColours = {
 	"pink",
@@ -52,7 +52,7 @@ minetest.register_node("blox:glowstone", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	light_source = 14,
-	is_ground_content = true,
+	is_ground_content = false,
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -65,7 +65,7 @@ minetest.register_node("blox:glowore", {
 	paramtype = "light",
 	sunlight_propagates = false,
 	light_source = 8,
-		drop = {
+	drop = {
 		max_items = 1,
 		items = {
 			{
@@ -93,7 +93,8 @@ minetest.register_node("blox:glowdust", {
 	light_source = 9,
 	walkable = false,
 	groups = {cracky=3, snappy=3},
-	})
+	is_ground_content = false,
+})
 
 -- param2-colored nodes: standard patterns
 
@@ -112,7 +113,7 @@ for _, nodeclass in ipairs(NodeClass) do
 		palette = "unifieddyes_palette_extended.png",
 		paramtype = "light",
 		paramtype2 = "color",
-		is_ground_content = true,
+		is_ground_content = false,
 		groups = {cracky=3, stone=1, ud_param2_colorable = 1},
 		sounds = default.node_sound_stone_defaults(),
 		on_construct = unifieddyes.on_construct,
@@ -130,7 +131,7 @@ for _, nodeclass in ipairs(NodeClass) do
 		palette = "unifieddyes_palette_extended.png",
 		paramtype = "light",
 		paramtype2 = "color",
-		is_ground_content = true,
+		is_ground_content = false,
 		groups = {cracky=3, stone=2, ud_param2_colorable = 1},
 		sounds = default.node_sound_stone_defaults(),
 		on_construct = unifieddyes.on_construct,
@@ -148,7 +149,7 @@ for _, nodeclass in ipairs(NodeClass) do
 		palette = "unifieddyes_palette_extended.png",
 		paramtype = "light",
 		paramtype2 = "color",
-		is_ground_content = true,
+		is_ground_content = false,
 		groups = {snappy=2, choppy=2, wood=1, oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 		sounds = default.node_sound_wood_defaults(),
 		on_construct = unifieddyes.on_construct,
@@ -168,7 +169,7 @@ minetest.register_node("blox:wood_tinted", {
 	palette = "unifieddyes_palette_extended.png",
 	paramtype = "light",
 	paramtype2 = "color",
-	is_ground_content = true,
+	is_ground_content = false,
 	groups = {snappy=2, choppy=2, wood=1, oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
@@ -181,7 +182,7 @@ minetest.register_node("blox:stone_square", {
 	palette = "unifieddyes_palette_extended.png",
 	paramtype = "light",
 	paramtype2 = "color",
-	is_ground_content = true,
+	is_ground_content = false,
 	groups = {snappy=2, choppy=2, stone=1, oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
@@ -194,7 +195,7 @@ minetest.register_node("blox:cobble_tinted", {
 	palette = "unifieddyes_palette_extended.png",
 	paramtype = "light",
 	paramtype2 = "color",
-	is_ground_content = true,
+	is_ground_content = false,
 	groups = {snappy=2, choppy=2, stone=2, oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
@@ -207,7 +208,7 @@ minetest.register_node("blox:stone_tinted", {
 	palette = "unifieddyes_palette_extended.png",
 	paramtype = "light",
 	paramtype2 = "color",
-	is_ground_content = true,
+	is_ground_content = false,
 	groups = {snappy=2, choppy=2, stone=1, oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
