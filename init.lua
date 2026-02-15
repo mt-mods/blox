@@ -8,6 +8,10 @@ by blert2112
 ***********
 --]]
 
+if unifieddyes and not unifieddyes.preserve_metadata then
+	error("Incompatible unifieddyes version, please update to the latest version to use this mod.")
+end
+
 blox = {}
 
 local version = "0.9"
@@ -40,11 +44,11 @@ local NodeMaterial = {
 	"cobble",
 }
 
-local moreblocks = minetest.get_modpath("moreblocks")
+local moreblocks = core.get_modpath("moreblocks")
 
 -- Nodes
 
-minetest.register_node("blox:glowstone", {
+core.register_node("blox:glowstone", {
 	description = "Glowstone",
 	tiles = {"blox_glowstone.png"},
 	--inventory_image = "blox_glowstone.png",
@@ -57,7 +61,7 @@ minetest.register_node("blox:glowstone", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("blox:glowore", {
+core.register_node("blox:glowore", {
 	description = "Glow Ore",
 	tiles = {"default_stone.png^blox_glowore.png"},
 	--inventory_image = {"default_stone.png^blox_glowore.png"},
@@ -82,7 +86,7 @@ minetest.register_node("blox:glowore", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("blox:glowdust", {
+core.register_node("blox:glowdust", {
 	description = "Glow Dust",
 	drawtype = "plantlike",
 	tiles = {"blox_glowdust.png"},
@@ -102,7 +106,7 @@ blox.old_89_color_nodes = {}
 
 for _, nodeclass in ipairs(NodeClass) do
 
-	minetest.register_node("blox:stone_"..nodeclass, {
+	core.register_node("blox:stone_"..nodeclass, {
 		description = "Blox stone "..nodeclass,
 		tiles = {
 			{ name = "default_stone.png", color = 0xffffffff },
@@ -117,10 +121,10 @@ for _, nodeclass in ipairs(NodeClass) do
 		groups = {cracky=3, stone=1, ud_param2_colorable = 1},
 		sounds = default.node_sound_stone_defaults(),
 		on_construct = unifieddyes.on_construct,
-		on_dig = unifieddyes.on_dig
+		preserve_metadata = unifieddyes.preserve_metadata,
 	})
 
-	minetest.register_node("blox:cobble_"..nodeclass, {
+	core.register_node("blox:cobble_"..nodeclass, {
 		description = "Blox cobble "..nodeclass,
 		tiles = {
 			{ name = "default_cobble.png", color = 0xffffffff },
@@ -135,10 +139,10 @@ for _, nodeclass in ipairs(NodeClass) do
 		groups = {cracky=3, stone=2, ud_param2_colorable = 1},
 		sounds = default.node_sound_stone_defaults(),
 		on_construct = unifieddyes.on_construct,
-		on_dig = unifieddyes.on_dig
+		preserve_metadata = unifieddyes.preserve_metadata,
 	})
 
-	minetest.register_node("blox:wood_"..nodeclass, {
+	core.register_node("blox:wood_"..nodeclass, {
 		description = "Blox wood "..nodeclass,
 		tiles = {
 			{ name = "default_wood.png", color = 0xffffffff },
@@ -153,7 +157,7 @@ for _, nodeclass in ipairs(NodeClass) do
 		groups = {snappy=2, choppy=2, wood=1, oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 		sounds = default.node_sound_wood_defaults(),
 		on_construct = unifieddyes.on_construct,
-		on_dig = unifieddyes.on_dig
+		preserve_metadata = unifieddyes.preserve_metadata,
 	})
 
 	table.insert(blox.old_89_color_nodes, "blox:stone_"..nodeclass)
@@ -163,7 +167,7 @@ end
 
 -- param2-colored nodes: tinted wood, cobble, stone, stone square
 
-minetest.register_node("blox:wood_tinted", {
+core.register_node("blox:wood_tinted", {
 	description = "Blox tinted wood",
 	tiles = { "blox_wood_tinted.png" },
 	palette = "unifieddyes_palette_extended.png",
@@ -173,10 +177,10 @@ minetest.register_node("blox:wood_tinted", {
 	groups = {snappy=2, choppy=2, wood=1, oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig
+	preserve_metadata = unifieddyes.preserve_metadata,
 })
 
-minetest.register_node("blox:stone_square", {
+core.register_node("blox:stone_square", {
 	description = "Blox stone square",
 	tiles = { "blox_stone_square.png" },
 	palette = "unifieddyes_palette_extended.png",
@@ -186,10 +190,10 @@ minetest.register_node("blox:stone_square", {
 	groups = {snappy=2, choppy=2, stone=1, oddly_breakable_by_hand=2,flammable=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig
+	preserve_metadata = unifieddyes.preserve_metadata,
 })
 
-minetest.register_node("blox:cobble_tinted", {
+core.register_node("blox:cobble_tinted", {
 	description = "Blox tinted cobble",
 	tiles = { "blox_cobble_tinted.png" },
 	palette = "unifieddyes_palette_extended.png",
@@ -199,10 +203,10 @@ minetest.register_node("blox:cobble_tinted", {
 	groups = {snappy=2, choppy=2, stone=2, oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig
+	preserve_metadata = unifieddyes.preserve_metadata,
 })
 
-minetest.register_node("blox:stone_tinted", {
+core.register_node("blox:stone_tinted", {
 	description = "Blox tinted stone",
 	tiles = { "blox_stone_tinted.png" },
 	palette = "unifieddyes_palette_extended.png",
@@ -212,7 +216,7 @@ minetest.register_node("blox:stone_tinted", {
 	groups = {snappy=2, choppy=2, stone=1, oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig,
+	preserve_metadata = unifieddyes.preserve_metadata,
 	drop = {
 		items = {
 			{items = {"blox:cobble_tinted"}, inherit_color = true },
@@ -227,19 +231,19 @@ table.insert(blox.old_89_color_nodes, "blox:stone_tinted")
 
 -- Override default stone and default cobble
 
-minetest.override_item("default:stone_block", {
+core.override_item("default:stone_block", {
 	palette = "unifieddyes_palette_extended.png",
 	airbrush_replacement_node = "blox:stone_square",
 	groups = {cracky = 3, stone = 1, ud_param2_colorable = 1},
 })
 
-minetest.override_item("default:stone", {
+core.override_item("default:stone", {
 	palette = "unifieddyes_palette_extended.png",
 	airbrush_replacement_node = "blox:stone_tinted",
 	groups = {cracky = 3, stone = 1, ud_param2_colorable = 1},
 })
 
-minetest.override_item("default:cobble", {
+core.override_item("default:cobble", {
 	palette = "unifieddyes_palette_extended.png",
 	airbrush_replacement_node = "blox:cobble_tinted",
 	groups = {cracky = 3, stone = 2, ud_param2_colorable = 1},
@@ -248,7 +252,7 @@ minetest.override_item("default:cobble", {
 -- override the Moreblocks nodes we use
 
 if moreblocks then
-	minetest.override_item("moreblocks:circle_stone_bricks", {
+	core.override_item("moreblocks:circle_stone_bricks", {
 		palette = "unifieddyes_palette_extended.png",
 		airbrush_replacement_node = "blox:stone_loop",
 		groups = {cracky = 3, ud_param2_colorable = 1},
@@ -265,7 +269,7 @@ if moreblocks then
 		}
 	})
 
-	minetest.override_item("moreblocks:iron_checker", {
+	core.override_item("moreblocks:iron_checker", {
 		palette = "unifieddyes_palette_extended.png",
 		airbrush_replacement_node = "blox:stone_checker",
 		groups = {cracky = 3, ud_param2_colorable = 1},
@@ -282,7 +286,7 @@ if moreblocks then
 		}
 	})
 
-	minetest.override_item("moreblocks:wood_tile", {
+	core.override_item("moreblocks:wood_tile", {
 		palette = "unifieddyes_palette_extended.png",
 		airbrush_replacement_node = "blox:wood_quarter",
 		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
@@ -299,7 +303,7 @@ if moreblocks then
 		}
 	})
 
-	minetest.override_item("moreblocks:wood_tile_flipped", {
+	core.override_item("moreblocks:wood_tile_flipped", {
 		palette = "unifieddyes_palette_extended.png",
 		airbrush_replacement_node = "blox:wood_quarter",
 		groups = {wood = 1, snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3, ud_param2_colorable = 1},
@@ -319,8 +323,8 @@ end
 
 local dye_color = "dye:white"
 
-if minetest.get_modpath("coloredwood") then
-	minetest.register_craft({
+if core.get_modpath("coloredwood") then
+	core.register_craft({
 		output = unifieddyes.make_colored_itemstack("blox:wood_tinted 4", "extended", dye_color),
 		recipe = {
 			{ dye_color,      "default:wood", dye_color      },
@@ -341,12 +345,12 @@ if minetest.get_modpath("coloredwood") then
 	})
 
 else
-	minetest.override_item("default:wood", {
+	core.override_item("default:wood", {
 		airbrush_replacement_node = "blox:wood_tinted",
 		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1, ud_param2_colorable = 1},
 	})
 
-	minetest.override_item("blox:wood_tinted", {
+	core.override_item("blox:wood_tinted", {
 		drop = "default:wood",
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2,flammable=3, not_in_creative_inventory = 1, ud_param2_colorable = 1},
 	})
@@ -450,7 +454,7 @@ unifieddyes.register_color_craft({
 })
 
 
-minetest.register_craft({
+core.register_craft({
 	output = 'blox:glowstone 2',
 	recipe = {
 		{"", 'blox:glowdust', ""},
@@ -549,14 +553,14 @@ end
 --Fuel
 
 for _, nodeclass in ipairs(NodeClass) do
-	minetest.register_craft({
+	core.register_craft({
 		type = "fuel",
 		recipe = "blox:wood_"..nodeclass,
 		burntime = 7,
 	})
 end
 
-minetest.register_craft({
+core.register_craft({
 	type = "fuel",
 	recipe = "blox:wood_tinted",
 	burntime = 7,
@@ -564,7 +568,7 @@ minetest.register_craft({
 
 -- Tools
 
-minetest.register_tool("blox:bloodbane", {
+core.register_tool("blox:bloodbane", {
     description = "Blood Bane",
     inventory_image = "blox_bloodbane.png",
     tool_capabilities = {
@@ -585,11 +589,11 @@ minetest.register_tool("blox:bloodbane", {
 
 local sea_level = 1
 
-minetest.register_on_mapgen_init(function(mapgen_params)
+core.register_on_mapgen_init(function(mapgen_params)
 	sea_level = mapgen_params.water_level
 end)
 
-minetest.register_ore({
+core.register_ore({
 	ore_type       = "scatter",
 	ore            = "blox:glowore",
 	wherein        = "default:stone",
@@ -600,7 +604,7 @@ minetest.register_ore({
 	y_max          = 31000,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type       = "scatter",
 	ore            = "blox:glowore",
 	wherein        = "default:stone",
@@ -611,7 +615,7 @@ minetest.register_ore({
 	y_max          = sea_level + 20,
 })
 
-minetest.register_ore({
+core.register_ore({
 	ore_type       = "scatter",
 	ore            = "blox:glowore",
 	wherein        = "default:stone",
